@@ -1,0 +1,150 @@
+{
+    "name": "dlangui",
+    "description": "Cross platform GUI for D. Layouts, styles, themes, unicode, i18n, OpenGL, widgets. Android support.",
+    "homepage": "https://github.com/buggins/dlangui",
+    "license": "Boost",
+    "authors": ["Vadim Lopatin"],
+
+    "targetName": "dlangui",
+    "targetPath": "lib",
+    "targetType": "staticLibrary",
+
+    "sourcePaths": [
+        "3rdparty", "src"
+    ],
+
+    "importPaths": [
+        "3rdparty", "src"
+    ],
+
+    "libs-linux": ["z"],
+
+    "libs-windows": ["ole32"],
+
+    "stringImportPaths": [
+        "views"
+    ],
+
+    "-ddoxFilterArgs": ["--unittest-examples", "--min-protection=Protected", "--ex", "win32.",
+        "--ex", "dimage.", "--ex", "fontconfig", "--ex", "src.dlangui"],
+
+    "sourceFiles-windows-x86-dmd": ["$PACKAGE_DIR/src/win_app.def"],
+    "excludedSourceFiles-windows": ["3rdparty/fontconfig/*"],
+
+    "dependencies": {
+        "inilike": "~>1.2.2",
+        "icontheme": "~>1.2.3",
+        "arsd-official:dom": "~>11.1.0",
+        "arsd-official:image_files": "~>11.1.0"
+    },
+
+    "subPackages": [
+        "./examples/helloworld/",
+        "./examples/example1/",
+        "./examples/dmledit/",
+        "./examples/d3d/",
+        "./examples/dminer/",
+        "./examples/tetris/",
+        "./examples/ircclient/",
+        "./examples/spreadsheet/",
+        "./examples/dragon/"
+    ],
+
+    "configurations": [
+        {
+            "name": "default",
+            "versions": ["USE_OPENGL", "EmbedStandardResources", "GL_32"],
+            "versions-posix": ["USE_SDL", "USE_FREETYPE", "SDL_204"],
+            "versions-windows": ["Unicode"],
+            "libs-windows": ["opengl32"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4",
+                "bindbc-sdl": "~>1.4.5"
+            },
+            "copyFiles-windows-x86_64": [
+                "libs/windows/x86_64/libfreetype-6.dll"
+            ],
+            "copyFiles-windows-x86": [
+                "libs/windows/x86/libfreetype-6.dll"
+            ]
+        },
+        {
+            "name": "console",
+            "versions": ["USE_CONSOLE", "EmbedStandardResources"],
+            "libs-windows": ["user32"],
+            "excludedSourceFiles": ["3rdparty/*GL*", "3rdparty/android", "3rdparty/dimage", "3rdparty/fontconfig/*", "3rdparty/icontheme", "3rdparty/jni.d"]
+        },
+        {
+            "name": "external",
+            "versions": ["USE_EXTERNAL"],
+            "libs-windows": ["opengl32"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4"
+            }
+        },
+        {
+            "name": "minimal",
+            "versions": ["EmbedStandardResources", "ForceLogs"],
+            "versions-posix": ["USE_SDL", "USE_FREETYPE", "NO_OPENGL", "SDL_204"],
+            "versions-windows": ["Unicode" ,"NO_OPENGL"],
+            "libs-windows": ["opengl32"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4",
+                "bindbc-sdl": "~>1.4.5",
+                "icontheme": "~>1.2.3"
+            }
+        },
+        {
+            "name": "sdl",
+            "versions": ["USE_SDL", "USE_OPENGL", "USE_FREETYPE", "EmbedStandardResources", "GL_32", "SDL_204"],
+            "versions-windows": ["Unicode"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4",
+                "bindbc-sdl": "~>1.4.5",
+                "icontheme": "~>1.2.3"
+            },
+            "copyFiles-windows-x86_64": [
+                "libs/windows/x86_64/libfreetype-6.dll",
+                "libs/windows/x86_64/SDL2.dll"
+            ],
+            "copyFiles-windows-x86": [
+                "libs/windows/x86/libfreetype-6.dll",
+                "libs/windows/x86/SDL2.dll"
+            ]
+        },
+        {
+            "name": "x11",
+            "versions": ["USE_X11", "USE_FREETYPE", "EmbedStandardResources", "USE_OPENGL", "GL_32"],
+            "versions-windows": ["Unicode"],
+            "libs-posix": ["GLX"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4",
+                "x11": "~>1.0.21",
+                "icontheme": "~>1.2.3",
+                "glx-d": "~>1.1.0"
+            }
+        },
+        {
+            "name": "sfml",
+            "versions": ["USE_DSFML", "USE_OPENGL", "USE_FREETYPE", "EmbedStandardResources", "GL_32"],
+            "versions-windows": ["Unicode"],
+            "dependencies": {
+                "bindbc-opengl": "~>1.1.0",
+                "bindbc-freetype": "~>1.2.4",
+                "dsfml": "~>2.1.0",
+                "icontheme": "~>1.2.3"
+            },
+            "copyFiles-windows-x86_64": [
+                "libs/windows/x86_64/libfreetype-6.dll"
+            ],
+            "copyFiles-windows-x86": [
+                "libs/windows/x86/libfreetype-6.dll"
+            ]
+        }
+    ]
+}

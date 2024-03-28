@@ -1,0 +1,11 @@
+{
+    "name": "themetest",
+    "targetPath": "bin",
+    "targetType": "executable",
+
+    "stringImportPaths": ["views", "views/res"],
+
+    "dependencies": {
+        "dlangui": {"path": "../../"}
+    }
+}

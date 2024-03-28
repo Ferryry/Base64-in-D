@@ -1,0 +1,48 @@
+{
+    "name": "example1",
+    "description": "dlangui library example 1",
+    "homepage": "https://github.com/buggins/dlangui",
+    "license": "Boost",
+    "authors": ["Vadim Lopatin"],
+
+    "targetPath": "bin",
+    "targetType": "executable",
+    "targetName": "example1",
+
+    "stringImportPaths": ["views", "views/res", "views/res/i18n", "views/res/mdpi"],
+
+    "versions": ["ForceLogs", "GL_AllowDeprecated"],
+
+    "dependencies": {
+        "dlangui": {"path": "../../"}
+    },
+    "configurations" : [
+        {
+            "name" : "default"
+        },
+        {
+            "name" : "console",
+            "subConfigurations" : {
+                "dlangui" : "console"
+            }
+        },
+        {
+            "name" : "sdl",
+            "subConfigurations" : {
+                "dlangui" : "sdl"
+            }
+        },
+        {
+            "name" : "x11",
+            "subConfigurations" : {
+                "dlangui" : "x11"
+            }
+        },
+        {
+            "name" : "minimal",
+            "subConfigurations" : {
+                "dlangui" : "minimal"
+            }
+        }
+    ]
+}

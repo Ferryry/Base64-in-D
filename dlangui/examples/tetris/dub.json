@@ -1,0 +1,23 @@
+{
+    "name": "tetris",
+    "description": "dlangui library example: Tetris game",
+    "homepage": "https://github.com/buggins/dlangui",
+    "license": "Boost",
+    "authors": ["Vadim Lopatin"],
+
+    "targetPath": "bin",
+    "targetType": "executable",
+    "targetName": "tetris",
+
+    "stringImportPaths": ["views", "views/res"],
+
+    "versions": ["EmbedStandardResources", "ForceLogs"],
+
+    "dependencies": {
+        "dlangui": {"path": "../../"}
+    },
+
+    "subConfigurations": {
+        "dlangui": "minimal"
+    }
+}

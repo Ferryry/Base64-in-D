@@ -1,0 +1,32 @@
+{
+    "name": "helloworld",
+    "description": "dlangui library example Hello World",
+    "homepage": "https://github.com/buggins/dlangui",
+    "license": "Boost",
+    "authors": ["Vadim Lopatin"],
+
+    "targetPath": "bin",
+    "targetName": "helloworld",
+    "targetType": "executable",
+
+    "versions": ["EmbedStandardResources"],
+
+    "dependencies": {
+        "dlangui": {"path": "../../"}
+    },
+
+    "configurations" : [
+        {
+            "name" : "default",
+            "subConfigurations" : {
+                "dlangui" : "minimal"
+            }
+        },
+        {
+            "name" : "console",
+            "subConfigurations" : {
+                "dlangui" : "console"
+            }
+        }
+    ]
+}

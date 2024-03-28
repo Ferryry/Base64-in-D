@@ -1,0 +1,22 @@
+{
+	"authors": [
+		"Ferryry"
+	],
+	"copyright": "Copyright © 2024, Ferryry",
+	"dependencies": {
+		"dlangui": "~>0.10.7"
+	},
+	"description": "A minimal D application.",
+	"license": "GPL",
+	"name": "testproject",
+	"targetPath": "bin",
+	"targetType": "executable",
+
+	"dependencies": {
+        "dlangui": {"path": "dlangui/"}
+    },
+
+    "subConfigurations": {
+        "dlangui": "minimal"
+    }
+}
